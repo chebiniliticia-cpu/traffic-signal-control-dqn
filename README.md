@@ -49,6 +49,21 @@ These are **SUMO lane IDs**. Each lane belongs to one incoming road of the inter
 
 ---
 
+### Traffic Signal Phase Switching
+
+The four incoming lanes are divided into two traffic groups according to the traffic signal phases. The lanes belonging to the same group are assigned the green signal simultaneously, while the lanes of the other group remain red. Consequently, the intersection operates by alternating between these two groups rather than controlling each incoming lane independently.
+
+**Group 1** consists of lanes `-371466059_0` and `29057968_0`, while **Group 2** consists of lanes `29057921_0` and `-371466060_0`.
+
+During the control process, one group remains active with a green signal while the other is stopped. When the DQN selects a switching action, the current green phase is followed by a yellow transition phase before the other group receives the green signal. The phase sequence is therefore:
+
+**Group 1 (Green) → Yellow → Group 2 (Green) → Yellow → Group 1 (Green) → ...**
+
+The agent's decision is not which individual lane should receive green, but **whether to maintain the current traffic group or switch the green signal to the other group**.
+
+
+---
+
 ## Deep Q-Learning
 
 The DQN observes the traffic conditions and chooses between two actions:
