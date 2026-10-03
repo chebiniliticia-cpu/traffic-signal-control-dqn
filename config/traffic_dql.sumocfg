@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <input>
+        <net-file value="traffic_dql.net.xml"/>
+        <route-files value="traffic_dql.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="1800"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <output>
+        <tripinfo-output value="tripinfo.xml"/>
+        <summary-output value="summary.xml"/>
+    </output>
+
+</configuration>
