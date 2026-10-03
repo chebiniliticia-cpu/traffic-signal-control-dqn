@@ -64,7 +64,7 @@ When a change is made, a **4-second yellow phase** is applied before the next gr
 
 ---
 
-## 📊 State Representation
+## State Representation
 
 The DQN uses three values to describe the current traffic situation:
 
