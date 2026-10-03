@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes>
+
+    <!-- Vehicle types -->
+
+    <vType id="car"
+           accel="2.6"
+           decel="4.5"
+           sigma="0.5"
+           length="5.0"
+           minGap="2.5"
+           maxSpeed="13.89"
+           speedFactor="normc(1.0,0.1,0.8,1.2)"/>
+
+    <vType id="fastCar"
+           accel="3.0"
+           decel="4.8"
+           sigma="0.35"
+           length="4.7"
+           minGap="2.2"
+           maxSpeed="16.67"
+           speedFactor="normc(1.0,0.08,0.9,1.2)"/>
+
+    <vType id="slowCar"
+           accel="1.8"
+           decel="4.0"
+           sigma="0.7"
+           length="5.2"
+           minGap="3.0"
+           maxSpeed="11.11"
+           speedFactor="normc(1.0,0.12,0.7,1.1)"/>
+
+
+    <!-- North routes -->
+
+    <route id="N_right" edges="-371466059 371466060"/>
+    <route id="N_straight" edges="-371466059 -29057968"/>
+    <route id="N_left" edges="-371466059 -29057921"/>
+
+    <routeDistribution id="N_dist">
+        <route refId="N_straight" probability="0.55"/>
+        <route refId="N_left" probability="0.25"/>
+        <route refId="N_right" probability="0.20"/>
+    </routeDistribution>
+
+
+    <!-- East routes -->
+
+    <route id="E_right" edges="29057921 371466059"/>
+    <route id="E_straight" edges="29057921 371466060"/>
+    <route id="E_left" edges="29057921 -29057968"/>
+
+    <routeDistribution id="E_dist">
+        <route refId="E_straight" probability="0.45"/>
+        <route refId="E_left" probability="0.35"/>
+        <route refId="E_right" probability="0.20"/>
+    </routeDistribution>
+
+
+    <!-- South routes -->
+
+    <route id="S_right" edges="29057968 -29057921"/>
+    <route id="S_straight" edges="29057968 371466059"/>
+    <route id="S_left" edges="29057968 371466060"/>
+
+    <routeDistribution id="S_dist">
+        <route refId="S_straight" probability="0.50"/>
+        <route refId="S_left" probability="0.30"/>
+        <route refId="S_right" probability="0.20"/>
+    </routeDistribution>
+
+
+    <!-- West routes -->
+
+    <route id="W_right" edges="-371466060 -29057968"/>
+    <route id="W_straight" edges="-371466060 -29057921"/>
+    <route id="W_left" edges="-371466060 371466059"/>
+
+    <routeDistribution id="W_dist">
+        <route refId="W_straight" probability="0.55"/>
+        <route refId="W_left" probability="0.20"/>
+        <route refId="W_right" probability="0.25"/>
+    </routeDistribution>
+
+
+    <!-- NORMAL TRAFFIC : 900 veh/h -->
+
+    <!-- -371466059 : 300 veh/h -->
+
+    <flow id="N_normal_car"
+          type="car"
+          route="N_dist"
+          begin="0"
+          end="600"
+          probability="0.0583"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_normal_fast"
+          type="fastCar"
+          route="N_dist"
+          begin="0"
+          end="600"
+          probability="0.0167"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_normal_slow"
+          type="slowCar"
+          route="N_dist"
+          begin="0"
+          end="600"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057921 : 150 veh/h -->
+
+    <flow id="E_normal_car"
+          type="car"
+          route="E_dist"
+          begin="0"
+          end="600"
+          probability="0.0292"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_normal_fast"
+          type="fastCar"
+          route="E_dist"
+          begin="0"
+          end="600"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_normal_slow"
+          type="slowCar"
+          route="E_dist"
+          begin="0"
+          end="600"
+          probability="0.0042"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057968 : 300 veh/h -->
+
+    <flow id="S_normal_car"
+          type="car"
+          route="S_dist"
+          begin="0"
+          end="600"
+          probability="0.0583"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_normal_fast"
+          type="fastCar"
+          route="S_dist"
+          begin="0"
+          end="600"
+          probability="0.0167"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_normal_slow"
+          type="slowCar"
+          route="S_dist"
+          begin="0"
+          end="600"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- -371466060 : 150 veh/h -->
+
+    <flow id="W_normal_car"
+          type="car"
+          route="W_dist"
+          begin="0"
+          end="600"
+          probability="0.0292"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_normal_fast"
+          type="fastCar"
+          route="W_dist"
+          begin="0"
+          end="600"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_normal_slow"
+          type="slowCar"
+          route="W_dist"
+          begin="0"
+          end="600"
+          probability="0.0042"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- PEAK TRAFFIC : 1200 veh/h -->
+
+    <!-- -371466059 : 400 veh/h -->
+
+    <flow id="N_peak_car"
+          type="car"
+          route="N_dist"
+          begin="600"
+          end="1200"
+          probability="0.0778"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_peak_fast"
+          type="fastCar"
+          route="N_dist"
+          begin="600"
+          end="1200"
+          probability="0.0222"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_peak_slow"
+          type="slowCar"
+          route="N_dist"
+          begin="600"
+          end="1200"
+          probability="0.0111"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057921 : 200 veh/h -->
+
+    <flow id="E_peak_car"
+          type="car"
+          route="E_dist"
+          begin="600"
+          end="1200"
+          probability="0.0389"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_peak_fast"
+          type="fastCar"
+          route="E_dist"
+          begin="600"
+          end="1200"
+          probability="0.0111"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_peak_slow"
+          type="slowCar"
+          route="E_dist"
+          begin="600"
+          end="1200"
+          probability="0.0056"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057968 : 400 veh/h -->
+
+    <flow id="S_peak_car"
+          type="car"
+          route="S_dist"
+          begin="600"
+          end="1200"
+          probability="0.0778"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_peak_fast"
+          type="fastCar"
+          route="S_dist"
+          begin="600"
+          end="1200"
+          probability="0.0222"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_peak_slow"
+          type="slowCar"
+          route="S_dist"
+          begin="600"
+          end="1200"
+          probability="0.0111"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- -371466060 : 200 veh/h -->
+
+    <flow id="W_peak_car"
+          type="car"
+          route="W_dist"
+          begin="600"
+          end="1200"
+          probability="0.0389"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_peak_fast"
+          type="fastCar"
+          route="W_dist"
+          begin="600"
+          end="1200"
+          probability="0.0111"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_peak_slow"
+          type="slowCar"
+          route="W_dist"
+          begin="600"
+          end="1200"
+          probability="0.0056"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- LOW TRAFFIC : 1000 veh/h -->
+
+    <!-- -371466059 : 350 veh/h -->
+
+    <flow id="N_low_car"
+          type="car"
+          route="N_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0681"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_low_fast"
+          type="fastCar"
+          route="N_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0194"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="N_low_slow"
+          type="slowCar"
+          route="N_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0097"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057921 : 150 veh/h -->
+
+    <flow id="E_low_car"
+          type="car"
+          route="E_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0292"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_low_fast"
+          type="fastCar"
+          route="E_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="E_low_slow"
+          type="slowCar"
+          route="E_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0042"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- 29057968 : 350 veh/h -->
+
+    <flow id="S_low_car"
+          type="car"
+          route="S_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0681"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_low_fast"
+          type="fastCar"
+          route="S_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0194"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="S_low_slow"
+          type="slowCar"
+          route="S_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0097"
+          departLane="0"
+          departSpeed="0"/>
+
+
+    <!-- -371466060 : 150 veh/h -->
+
+    <flow id="W_low_car"
+          type="car"
+          route="W_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0292"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_low_fast"
+          type="fastCar"
+          route="W_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0083"
+          departLane="0"
+          departSpeed="0"/>
+
+    <flow id="W_low_slow"
+          type="slowCar"
+          route="W_dist"
+          begin="1200"
+          end="1800"
+          probability="0.0042"
+          departLane="0"
+          departSpeed="0"/>
+
+</routes>
