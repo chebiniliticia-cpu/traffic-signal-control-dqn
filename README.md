@@ -61,7 +61,6 @@ During the control process, one group remains active with a green signal while t
 
 The agent's decision is not which individual lane should receive green, but **whether to maintain the current traffic group or switch the green signal to the other group**.
 
-
 ---
 
 ## Deep Q-Learning
@@ -108,9 +107,9 @@ The agent is rewarded for keeping queues small.
 
 The reward is:
 
-[
+$$
 r_t = -(Q_1^2 + Q_2^2)
-]
+$$
 
 Large queues therefore produce a more negative reward.
 
@@ -164,7 +163,7 @@ A **target network** is also used to improve training stability.
 
 ---
 
-##  Traffic Simulation
+## Traffic Simulation
 
 The environment is simulated with **SUMO** and controlled through **TraCI**.
 
@@ -260,6 +259,42 @@ traffic-light-dqn/
 └── models/
     └── dqn_single_intersection_v2.keras
 ```
+
+### Directory and File Description
+
+**`src/`** contains the Python scripts used to train, evaluate, and analyze the traffic-light controllers.
+
+* `train_dqn.py` — trains the DQN agent using the SUMO traffic environment.
+* `test_dqn.py` — evaluates the trained DQN controller.
+* `test_fixed.py` — runs the fixed-time controller used as the baseline.
+* `plot_results.py` — generates plots from the experimental results.
+
+**`config/`** contains the SUMO simulation configuration files.
+
+* `traffic_dql.sumocfg` — main SUMO configuration file.
+* `traffic_dql.net.xml` — defines the road network and traffic-light intersection.
+* `routes.rou.xml` — defines vehicle routes and traffic demand.
+* `traffic.rou.xml` — contains traffic-related route and flow definitions used by the simulation.
+
+**`figures/`** contains the figures generated from the experiments.
+
+* `queue_length_comparison.png` — compares queue lengths between DQN and fixed-time control.
+* `waiting_vehicles_comparison.png` — compares the number of waiting vehicles.
+* `cumulative_waiting_time_comparison.png` — compares cumulative waiting time.
+* `queue_by_traffic_group.png` — shows queue evolution for the two traffic groups.
+
+**`data/`** contains the time-series data collected during the experiments.
+
+* `test_dqn_timeseries_v2.csv` — time-series results from the DQN controller.
+* `test_fixed_timeseries_v2.csv` — time-series results from the fixed-time controller.
+
+**`models/`** contains the trained machine-learning model.
+
+* `dqn_single_intersection_v2.keras` — trained DQN model used for traffic-light control.
+
+`requirements.txt` lists the Python dependencies required to run the project.
+
+`.gitignore` specifies files and folders that should not be tracked by Git.
 
 ---
 
