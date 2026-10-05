@@ -405,3 +405,14 @@ Several improvements could be explored in future work:
 - Testing Double DQN (DDQN) and other reinforcement learning algorithms.
 - Evaluating the controller under a wider range of traffic demand scenarios.
 - Moving toward more realistic traffic scenarios and real-world traffic data.
+
+## Reference
+
+This project was inspired by the following research paper:
+
+> X.-Y. Liu, M. Zhu, S. C. Borst, and A. Walid,  
+> *Deep Reinforcement Learning for Traffic Light Control in Intelligent Transportation Systems*, 2023.
+
+The paper investigates the use of Deep Reinforcement Learning for adaptive traffic-light control, including a DQN-based approach for a single road intersection.
+
+This project implements a simplified DQN-based traffic-light controller in SUMO/TraCI and evaluates it against a Fixed-Time control strategy.
