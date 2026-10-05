@@ -243,11 +243,9 @@ traffic-light-dqn/
 ├── config/
 │   ├── traffic_dql.sumocfg
 │   ├── traffic_dql.net.xml
-│   ├── routes.rou.xml
-│   └── traffic.rou.xml
+│   └── traffic_dql.rou.xml
 │
 ├── figures/
-│   ├── queue_length_comparison.png
 │   ├── waiting_vehicles_comparison.png
 │   ├── cumulative_waiting_time_comparison.png
 │   └── queue_by_traffic_group.png
