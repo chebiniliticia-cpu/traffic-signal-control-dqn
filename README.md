@@ -334,3 +334,74 @@ SUMO Traffic Simulation
 ```
 
 The final goal is to study whether a **reinforcement-learning-based traffic signal controller** can adapt to changing traffic conditions compared with a conventional fixed-time controller.
+
+## Results
+
+The DQN controller was evaluated against a fixed-time traffic light strategy under the same traffic scenario over a 1800-second simulation.
+
+### Queue Length by Traffic Group
+
+![Queue Length by Traffic Group](figures/queue_by_traffic_group.png)
+
+This figure compares the evolution of queue lengths for the two traffic groups under the DQN and Fixed-Time controllers.
+
+The Fixed-Time strategy shows a strong accumulation of vehicles in Group 1 during the high-demand period, with a maximum queue of approximately 34 vehicles. In comparison, the DQN controller keeps the queues considerably shorter, with a maximum of about 11 vehicles.
+
+The DQN controller adapts its phase-switching decisions according to the observed traffic conditions, which helps prevent the progressive accumulation of vehicles and maintains a better balance between the two traffic groups.
+
+At the highest congestion point, the maximum queue is reduced by approximately 68% with DQN compared with Fixed-Time.
+
+> **Note:** These results come from a single simulation scenario. Further experiments with different traffic demands and random seeds would be required to assess the robustness of the approach.
+
+### Cumulative Waiting Time
+
+![Cumulative Waiting Time](figures/cumulative_waiting_time_comparison.png)
+
+This figure shows the cumulative waiting time experienced by vehicles throughout the 1800-second simulation.
+
+During the high-demand period, the Fixed-Time controller accumulates waiting time much faster than the DQN controller. At the end of the simulation, the cumulative waiting time is approximately **20,500 vehicle·s** for Fixed-Time compared with approximately **5,200 vehicle·s** for DQN.
+
+This corresponds to a reduction of approximately **75%** in cumulative waiting time. The result is consistent with the shorter queues observed with the DQN controller and indicates that the adaptive policy reduces the time vehicles spend waiting at the intersection.
+
+> **Note:** These results correspond to a single simulation scenario.
+
+### Waiting Vehicles
+
+![Waiting Vehicles Comparison](figures/waiting_vehicles_comparison.png)
+
+This figure compares the number of waiting vehicles over time for the DQN and Fixed-Time controllers.
+
+The Fixed-Time strategy produces considerably higher numbers of waiting vehicles during periods of increased traffic demand, while the DQN controller generally maintains a lower number of waiting vehicles.
+
+This indicates that the DQN agent is able to react to changes in traffic conditions by choosing when to switch the traffic-light phase, helping to reduce congestion at the intersection.
+
+### Overall Interpretation
+
+Overall, the results show that the DQN controller performs better than the Fixed-Time strategy under the tested traffic conditions. It reduces queue lengths, the number of waiting vehicles, and cumulative waiting time, particularly during periods of high traffic demand.
+
+## Limitations
+
+- The DQN agent controls phase switching but does not directly optimize the duration of each traffic-light phase. Decisions are made at fixed 10-second intervals, which limits the flexibility of the controller.
+- The controller is evaluated on a single intersection and does not consider interactions between multiple traffic lights.
+- The state representation is relatively simple, mainly based on queue lengths and the current traffic-light phase.
+- The controller manages two traffic groups rather than optimizing individual lanes or traffic movements separately.
+- The experiments are performed in a simulated SUMO environment and may not capture all real-world traffic conditions.
+- The evaluation is conducted under a limited number of traffic scenarios, so further testing is needed to assess the robustness of the approach under different traffic demands.
+
+## Conclusion
+
+This project demonstrates the application of Deep Q-Learning to adaptive traffic-light control using the SUMO traffic simulation environment.
+
+Compared with the Fixed-Time strategy, the DQN controller achieved lower queue lengths, fewer waiting vehicles, and substantially lower cumulative waiting time in the tested scenario. These results demonstrate the potential of reinforcement learning to improve traffic signal control by adapting phase-switching decisions to changing traffic conditions.
+
+## Future Perspectives
+
+Several improvements could be explored in future work:
+
+- Directly optimizing the duration of traffic-light phases instead of only controlling phase switching.
+- Extending the approach to multiple connected intersections.
+- Using richer traffic states, including vehicle speeds, traffic density, and approaching vehicles.
+- Optimizing individual traffic movements or lanes instead of using two aggregated traffic groups.
+- Testing Double DQN (DDQN) and other reinforcement learning algorithms.
+- Evaluating the controller under a wider range of traffic demand scenarios.
+- Moving toward more realistic traffic scenarios and real-world traffic data.
