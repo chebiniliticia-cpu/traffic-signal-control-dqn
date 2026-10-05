@@ -271,12 +271,10 @@ traffic-light-dqn/
 
 * `traffic_dql.sumocfg` — main SUMO configuration file.
 * `traffic_dql.net.xml` — defines the road network and traffic-light intersection.
-* `routes.rou.xml` — defines vehicle routes and traffic demand.
-* `traffic.rou.xml` — contains traffic-related route and flow definitions used by the simulation.
+* `traffic_dql.rou.xml` — contains traffic-related route and flow definitions used by the simulation.
 
 **`figures/`** contains the figures generated from the experiments.
 
-* `queue_length_comparison.png` — compares queue lengths between DQN and fixed-time control.
 * `waiting_vehicles_comparison.png` — compares the number of waiting vehicles.
 * `cumulative_waiting_time_comparison.png` — compares cumulative waiting time.
 * `queue_by_traffic_group.png` — shows queue evolution for the two traffic groups.
@@ -289,10 +287,6 @@ traffic-light-dqn/
 **`models/`** contains the trained machine-learning model.
 
 * `dqn_single_intersection_v2.keras` — trained DQN model used for traffic-light control.
-
-`requirements.txt` lists the Python dependencies required to run the project.
-
-`.gitignore` specifies files and folders that should not be tracked by Git.
 
 ---
 
